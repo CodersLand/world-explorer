@@ -102,9 +102,11 @@ namespace WindowsFormsApp1
             // 
             this.progressBar1.BackColor = System.Drawing.SystemColors.ActiveCaption;
             this.progressBar1.ForeColor = System.Drawing.Color.GreenYellow;
-            this.progressBar1.Location = new System.Drawing.Point(13, 97);
+            this.progressBar1.Location = new System.Drawing.Point(93, 12);
             this.progressBar1.Name = "progressBar1";
-            this.progressBar1.Size = new System.Drawing.Size(74, 23);
+            this.progressBar1.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
+            this.progressBar1.Size = new System.Drawing.Size(403, 23);
+            this.progressBar1.Step = 1;
             this.progressBar1.Style = System.Windows.Forms.ProgressBarStyle.Marquee;
             this.progressBar1.TabIndex = 6;
             this.progressBar1.UseWaitCursor = true;

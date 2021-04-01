@@ -77,22 +77,5 @@ namespace WindowsFormsApp1
         {
             MessageBox.Show("alert", "123");
         }
-
-
-        private void Enter(object sender, KeyPressEventArgs e)
-        {   
-            if(e.KeyChar =='e')
-                try
-                {
-                    world = JsonConvert.DeserializeObject<Dictionary<string, int[][]>>(textBox1.Text)["map"];
-                }
-                catch (Exception)
-                {
-                    MessageBox.Show("aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa");
-                    throw;
-                }
-        }
-
-
     }
 }
