@@ -1,23 +1,17 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using DiscordRPC;
-using System.IO;
-using System.Linq;
-using System.Security;
-using System.Text;
+﻿using DiscordRPC;
 using Newtonsoft.Json;
-using System.Threading.Tasks;
+using System;
+using System.Collections.Generic;
+using System.Drawing;
+using System.IO;
+using System.Security;
 using System.Windows.Forms;
-using System.Diagnostics;
 
 namespace WindowsFormsApp1
 {
     public partial class Form1 : Form
     {
-        int[,] world;
+        int[][] world;
         public Form1()
         {
             InitializeComponent();
@@ -30,16 +24,15 @@ namespace WindowsFormsApp1
 
         private void button1_Click(object sender, EventArgs e)
         {
-            Dictionary<string, int[,]> ar = new Dictionary<string, int[,]>();
             if (openFileDialog1.ShowDialog() == DialogResult.OK)
             {
-                try  
+                try
                 {
                     var sr = new StreamReader(openFileDialog1.FileName);
                     string text = sr.ReadToEnd();
                     textBox1.Text = text;
-                    world = JsonConvert.DeserializeObject<Dictionary<string, int[,]>>(text)["map"];
-                    
+                    world = JsonConvert.DeserializeObject<Dictionary<string, int[][]>>(text)["map"];
+
                 }
                 catch (SecurityException ex)
                 {
@@ -56,8 +49,50 @@ namespace WindowsFormsApp1
                 MessageBox.Show("You Abosralsa");
                 return;
             }
-            Bitmap bm = new Bitmap(world.Length, world.Length);
+            pictureBox1.Location = new Point(323, 12);
+            int size = Convert.ToInt16(numericUpDown1.Value);
+            Bitmap bm = new Bitmap(world.Length*size, world.Length*size);
+            Graphics g = Graphics.FromImage(bm);
+            progressBar1.Visible = true;
+            progressBar1.Maximum = world.Length;
+            Color[] colors = new Color[5]
+            {
+                Color.Green, Color.Blue, Color.Red, Color.Gray, Color.Yellow
+            };
+            for (int i = 0; i < world.Length; i++)
+            {
+                progressBar1.Value++;
+                for (int j = 0; j < world[0].Length; j++)
+                {
+                    g.FillRectangle(new SolidBrush(colors[world[i][j]]), size*i, size*j, size * i + (size - 1), size * j + (size - 1));
+                
+                }
+            }
+            progressBar1.Visible = false;
             pictureBox1.Image = bm;
+
         }
+
+        private void progressBar1_Click(object sender, EventArgs e)
+        {
+            MessageBox.Show("alert", "123");
+        }
+
+
+        private void Enter(object sender, KeyPressEventArgs e)
+        {   
+            if(e.KeyChar =='e')
+                try
+                {
+                    world = JsonConvert.DeserializeObject<Dictionary<string, int[][]>>(textBox1.Text)["map"];
+                }
+                catch (Exception)
+                {
+                    MessageBox.Show("aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa");
+                    throw;
+                }
+        }
+
+
     }
 }
