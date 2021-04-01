@@ -32,7 +32,6 @@ namespace WindowsFormsApp1
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form1));
             this.button1 = new System.Windows.Forms.Button();
             this.openFileDialog1 = new System.Windows.Forms.OpenFileDialog();
-            this.textBox1 = new System.Windows.Forms.TextBox();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.button2 = new System.Windows.Forms.Button();
             this.numericUpDown1 = new System.Windows.Forms.NumericUpDown();
@@ -43,7 +42,7 @@ namespace WindowsFormsApp1
             // 
             // button1
             // 
-            this.button1.Location = new System.Drawing.Point(242, 12);
+            this.button1.Location = new System.Drawing.Point(12, 12);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(75, 23);
             this.button1.TabIndex = 1;
@@ -55,21 +54,12 @@ namespace WindowsFormsApp1
             // 
             this.openFileDialog1.FileName = "openFileDialog1";
             // 
-            // textBox1
-            // 
-            this.textBox1.Location = new System.Drawing.Point(12, 12);
-            this.textBox1.Multiline = true;
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(224, 273);
-            this.textBox1.TabIndex = 2;
-            this.textBox1.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.Enter);
-            // 
             // pictureBox1
             // 
             this.pictureBox1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.pictureBox1.Location = new System.Drawing.Point(324, 12);
+            this.pictureBox1.Location = new System.Drawing.Point(94, 12);
             this.pictureBox1.Name = "pictureBox1";
             this.pictureBox1.Size = new System.Drawing.Size(277, 273);
             this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.AutoSize;
@@ -78,7 +68,7 @@ namespace WindowsFormsApp1
             // 
             // button2
             // 
-            this.button2.Location = new System.Drawing.Point(243, 42);
+            this.button2.Location = new System.Drawing.Point(13, 42);
             this.button2.Name = "button2";
             this.button2.Size = new System.Drawing.Size(75, 23);
             this.button2.TabIndex = 4;
@@ -88,7 +78,7 @@ namespace WindowsFormsApp1
             // 
             // numericUpDown1
             // 
-            this.numericUpDown1.Location = new System.Drawing.Point(243, 71);
+            this.numericUpDown1.Location = new System.Drawing.Point(13, 71);
             this.numericUpDown1.Maximum = new decimal(new int[] {
             40,
             0,
@@ -112,9 +102,9 @@ namespace WindowsFormsApp1
             // 
             this.progressBar1.BackColor = System.Drawing.SystemColors.ActiveCaption;
             this.progressBar1.ForeColor = System.Drawing.Color.GreenYellow;
-            this.progressBar1.Location = new System.Drawing.Point(12, 291);
+            this.progressBar1.Location = new System.Drawing.Point(13, 97);
             this.progressBar1.Name = "progressBar1";
-            this.progressBar1.Size = new System.Drawing.Size(306, 23);
+            this.progressBar1.Size = new System.Drawing.Size(74, 23);
             this.progressBar1.Style = System.Windows.Forms.ProgressBarStyle.Marquee;
             this.progressBar1.TabIndex = 6;
             this.progressBar1.UseWaitCursor = true;
@@ -130,11 +120,10 @@ namespace WindowsFormsApp1
             this.Controls.Add(this.numericUpDown1);
             this.Controls.Add(this.button2);
             this.Controls.Add(this.pictureBox1);
-            this.Controls.Add(this.textBox1);
             this.Controls.Add(this.button1);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "Form1";
-            this.Text = "Form1";
+            this.Text = "дохера хрень";
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown1)).EndInit();
             this.ResumeLayout(false);
@@ -145,7 +134,6 @@ namespace WindowsFormsApp1
         #endregion
         private System.Windows.Forms.Button button1;
         private System.Windows.Forms.OpenFileDialog openFileDialog1;
-        private System.Windows.Forms.TextBox textBox1;
         private System.Windows.Forms.PictureBox pictureBox1;
         private System.Windows.Forms.Button button2;
         private System.Windows.Forms.NumericUpDown numericUpDown1;

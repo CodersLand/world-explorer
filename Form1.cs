@@ -2,6 +2,7 @@
 using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Drawing;
 using System.IO;
 using System.Security;
@@ -28,11 +29,9 @@ namespace WindowsFormsApp1
             {
                 try
                 {
-                    var sr = new StreamReader(openFileDialog1.FileName);
-                    string text = sr.ReadToEnd();
-                    textBox1.Text = text;
-                    world = JsonConvert.DeserializeObject<Dictionary<string, int[][]>>(text)["map"];
-
+                    var reader = new StreamReader(openFileDialog1.FileName);
+                    var result = reader.ReadToEnd();
+                    world = JsonConvert.DeserializeObject<Dictionary<string, int[][]>>(result)["map"];
                 }
                 catch (SecurityException ex)
                 {
@@ -68,6 +67,7 @@ namespace WindowsFormsApp1
                 
                 }
             }
+            progressBar1.Value = 0;
             progressBar1.Visible = false;
             pictureBox1.Image = bm;
 
