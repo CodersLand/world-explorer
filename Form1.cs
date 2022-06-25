@@ -1,5 +1,5 @@
-﻿using DiscordRPC;
-using Newtonsoft.Json;
+﻿using Newtonsoft.Json;
+using Newtonsoft.Json.Linq;
 using System;
 using System.Collections.Generic;
 using System.Diagnostics;
@@ -16,11 +16,6 @@ namespace WindowsFormsApp1
         public Form1()
         {
             InitializeComponent();
-            var client = new DiscordRpcClient("814090150144770078");
-            client.Initialize();
-            var presense = new RichPresence();
-            presense.State = "123";
-            client.SetPresence(presense);
         }
 
         private void button1_Click(object sender, EventArgs e)
@@ -29,9 +24,11 @@ namespace WindowsFormsApp1
             {
                 try
                 {
-                    var reader = new StreamReader(openFileDialog1.FileName);
-                    var result = reader.ReadToEnd();
-                    world = JsonConvert.DeserializeObject<Dictionary<string, int[][]>>(result)["map"];
+                    var result = new StreamReader(openFileDialog1.FileName).ReadToEnd();
+                    JObject worldfile = JObject.Parse(result);
+                    var array = worldfile["world"]["map"];
+                    world = array.ToObject<int[][]>();
+                    
                 }
                 catch (SecurityException ex)
                 {
@@ -76,6 +73,14 @@ namespace WindowsFormsApp1
         private void progressBar1_Click(object sender, EventArgs e)
         {
             MessageBox.Show("alert", "123");
+        }
+        class WorldFile
+        {
+            int[][] world;
+            string[] players;
+            string[] names;
+            int[][] builds;
+            
         }
     }
 }
